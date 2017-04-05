@@ -96,7 +96,7 @@ RUN buildDeps=" \
 
 COPY docker-php-* /usr/local/bin/
 
-WORKDIR /var/www/html
+WORKDIR /var/www
 
 RUN set -ex \
   && cd /usr/local/etc \
