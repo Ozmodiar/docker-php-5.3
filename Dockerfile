@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       libmysqlclient-dev \
       libsqlite3-0 \
       libxml2 \
+      php-pear \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
@@ -24,6 +25,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       re2c \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
+
+RUN pecl install pdo pdo_mysql -y
 
 ENV PHP_INI_DIR /usr/local/etc/php
 RUN mkdir -p $PHP_INI_DIR/conf.d
@@ -77,9 +80,11 @@ RUN buildDeps=" \
             --with-fpm-group=www-data \
             --disable-cgi \
             --enable-mysqlnd \
+            --enable-pdo \
             --with-mysql \
             --with-curl \
             --with-openssl=/usr/local/ssl \
+            --with-pdo-mysql \
             --with-readline \
             --with-recode \
             --with-zlib \
