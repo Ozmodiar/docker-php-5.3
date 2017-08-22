@@ -81,6 +81,7 @@ RUN buildDeps=" \
             --disable-cgi \
             --enable-mysqlnd \
             --enable-pdo \
+            --enable-soap \
             --with-mysql \
             --with-curl \
             --with-openssl=/usr/local/ssl \
